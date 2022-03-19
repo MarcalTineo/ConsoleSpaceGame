@@ -16,3 +16,20 @@ Collider::~Collider()
 {
 	OnCollisionCallback = nullptr;
 }
+
+void Collider::Collide(HitInfo hitInfo)
+{
+	OnCollisionCallback(hitInfo);
+}
+
+std::vector<Vector2> Collider::GetCollider()
+{
+	return collider;
+}
+
+int Collider::GetId()
+{
+	return actorId;
+}
+
+

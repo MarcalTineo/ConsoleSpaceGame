@@ -10,3 +10,7 @@ CollisionEngine::CollisionEngine()
 CollisionEngine::~CollisionEngine()
 {
 }
+
+void CollisionEngine::Update()
+{
+}

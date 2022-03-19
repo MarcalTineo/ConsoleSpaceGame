@@ -9,8 +9,7 @@
 
 class Engine
 {
-
-	public:
+public:
 	Game* currentGame;
 
 	int FPS;

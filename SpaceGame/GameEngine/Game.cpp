@@ -19,6 +19,18 @@ bool Game::IsAlive()
 	return isAlive;
 }
 
+void Game::Start()
+{
+}
+
+void Game::Update(float dt)
+{
+}
+
+void Game::Draw()
+{
+}
+
 void Game::Kill()
 {
 	isAlive = false;

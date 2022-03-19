@@ -18,3 +18,8 @@ char* Helpers::ScoreToString(int n)
 	int thousands = ((n - units - (tens * 10) - (hundreds * 100)) / 1000) % 10;
 	return new char[5]{ (char)thousands + 48, (char)hundreds + 48, (char)tens + 48, (char)units + 48, '\0' };
 }
+
+int Helpers::GenerateId()
+{
+	return std::rand()%(4294967000)-2147483000;
+}

@@ -5,15 +5,16 @@
 Actor::Actor()
 {
 	isActive = true;
-	position = Vector2::Zero();
+	collider = new Collider();
+	collider->OnCollisionCallback = OnCollision;
 }
-
 
 Actor::~Actor()
 {
+	delete collider;
 }
 
-std::vector<Vector2> Actor::GetCollider()
+Collider* Actor::GetCollider()
 {
 	return collider;
 }
@@ -33,4 +34,7 @@ bool Actor::CompareTag(std::string _tag)
 	return tag == _tag;
 }
 
+void Actor::OnCollision(HitInfo)
+{
+}
 
