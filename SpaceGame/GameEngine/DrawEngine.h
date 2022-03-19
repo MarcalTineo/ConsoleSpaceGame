@@ -4,45 +4,47 @@
 #include "Helpers.h"
 #include "Vector2.h"
 
-class DrawEngine
+namespace ConsoleEngine
 {
-protected:
-	Vector2 size;
 
-	HANDLE hConsole;
-
-	int defaultColor;
-	char* viewport;
-	char* viewportColors;
-
-public:
-	static DrawEngine& GetInstance()
+	class DrawEngine
 	{
-		static DrawEngine instance;
-		return instance;
-	}
-	
+	protected:
+		Vector2 size;
 
-	DrawEngine() {};
-	~DrawEngine();
+		HANDLE hConsole;
 
-	void SetDrawEngine(Vector2 size);
-private:
-	void ShowConsoleCursor(bool showFlag);
-public:
-	void DrawAtPos(char c, int x, int y);
-	void DrawAtPos(char c, int x, int y, int color);
+		int defaultColor;
+		char* viewport;
+		char* viewportColors;
 
-	void Write(char* text, int lenght, int x, int y);
-	void Write(char* text, int lenght, int x, int y, int color);
+	public:
+		static DrawEngine& GetInstance()
+		{
+			static DrawEngine instance;
+			return instance;
+		}
 
-	void Flush();
+		DrawEngine() {};
+		~DrawEngine();
 
-	void InitViewport();
+		void SetDrawEngine(Vector2 size);
+	private:
+		void ShowConsoleCursor(bool showFlag);
+	public:
+		void DrawAtPos(char c, int x, int y);
+		void DrawAtPos(char c, int x, int y, int color);
 
-	void SetCursorPosition(int x, int y);
+		void Write(char* text, int lenght, int x, int y);
+		void Write(char* text, int lenght, int x, int y, int color);
 
-	void Clear();
+		void Flush();
 
-};
+		void InitViewport();
 
+		void SetCursorPosition(int x, int y);
+
+		void Clear();
+
+	};
+}

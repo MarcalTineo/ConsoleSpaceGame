@@ -1,40 +1,43 @@
 #pragma once
 #include "windows.h"
 
-class Input
+namespace ConsoleEngine
 {
-	bool enabled;
-	//singleton
-public:
-	static Input& GetInstance()
+	class Input
 	{
-		static Input instance;
-		return instance;
-	}
+		bool enabled;
+		//singleton
+	public:
+		static Input& GetInstance()
+		{
+			static Input instance;
+			return instance;
+		}
 
-private:
-	bool* keysPressed;
-	bool* lastKeysPressed;
-public:
-	Input();
+	private:
+		bool* keysPressed;
+		bool* lastKeysPressed;
 
-	~Input();
+	public:
+		Input();
 
-	void Enable();
+		~Input();
 
-	void Disable();
+		void Enable();
 
-	bool GetKey(int key);
+		void Disable();
 
-	bool GetKeyDown(int key);
+		bool GetKey(int key);
 
-	bool GetKeyUp(int key);
+		bool GetKeyDown(int key);
 
-	void UpdateInput();
+		bool GetKeyUp(int key);
 
-	void ResetInput();
+		void UpdateInput();
 
-	bool AnyKey();
+		void ResetInput();
 
-};
+		bool AnyKey();
 
+	};
+}

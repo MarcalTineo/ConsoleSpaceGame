@@ -1,35 +1,36 @@
 #include "Collider.h"
 
-
-Collider::Collider()
+namespace ConsoleEngine
 {
-}
+	Collider::Collider()
+	{
+	}
 
-Collider::Collider(int _actorId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo))
-{
-	actorId = _actorId;
-	collider = _collider;
-	OnCollisionCallback = CollisionCallback;
-}
+	Collider::Collider(int _actorId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo))
+	{
+		actorId = _actorId;
+		collider = _collider;
+		OnCollisionCallback = CollisionCallback;
+	}
 
-Collider::~Collider()
-{
-	OnCollisionCallback = nullptr;
-}
+	Collider::~Collider()
+	{
+		OnCollisionCallback = nullptr;
+	}
 
-void Collider::Collide(HitInfo hitInfo)
-{
-	OnCollisionCallback(hitInfo);
-}
+	void Collider::Collide(HitInfo hitInfo)
+	{
+		OnCollisionCallback(hitInfo);
+	}
 
-std::vector<Vector2> Collider::GetCollider()
-{
-	return collider;
-}
+	std::vector<Vector2> Collider::GetCollider()
+	{
+		return collider;
+	}
 
-int Collider::GetId()
-{
-	return actorId;
+	int Collider::GetId()
+	{
+		return actorId;
+	}
 }
-
 

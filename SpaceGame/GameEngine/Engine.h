@@ -6,23 +6,28 @@
 #include "DrawEngine.h"
 #include "Game.h"
 
-
-class Engine
+namespace ConsoleEngine
 {
-public:
-	Game* currentGame;
+	class Engine
+	{
+	protected:
+		static Game* currentGame;
+	public:
+		static Game* GetGame()
+		{
+			return currentGame;
+		}
+		int FPS;
+		float deltaSeconds;
 
-	int FPS;
-	float deltaSeconds;
+		long long initTime;
+		float dt;
 
-	long long initTime;
-	float dt;
+		long long nextTime;
 
-	long long nextTime;
-
-	Engine(Game* game, int fps);
-	~Engine();
-	void RunGame();
-	long long GetTime();
-};
-
+		Engine(Game* game, int fps);
+		~Engine();
+		void RunGame();
+		long long GetTime();
+	};
+}

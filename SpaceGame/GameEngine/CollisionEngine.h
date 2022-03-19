@@ -1,11 +1,20 @@
 #pragma once
-class CollisionEngine
+#include "Actor.h"
+#include "Collider.h"
+#include "Engine.h"
+
+namespace ConsoleEngine
 {
+	class CollisionEngine
+	{
 
-public:
-	CollisionEngine();
-	~CollisionEngine();
+	public:
+		CollisionEngine();
+		~CollisionEngine();
 
-	void Update();
-};
+		void Update();
 
+		bool CheckCollision(Collider*, Collider*);
+	};
+
+}

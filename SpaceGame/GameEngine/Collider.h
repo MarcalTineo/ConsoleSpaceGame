@@ -3,40 +3,43 @@
 #include <string>
 #include "Vector2.h"
 
-
-struct HitInfo
+namespace ConsoleEngine
 {
-	int id;
-	std::string tag;
-};
+	struct HitInfo
+	{
+		int id;
+		std::string tag;
+		HitInfo(int id, std::string tag) : id(id), tag(tag) {};
+	};
 
-class ICollidable
-{
-protected:
-	Collider* collider;
-public:
-	virtual void OnCollision(HitInfo) = 0;
-	virtual Collider* GetCollider() = 0;
-};
+	class ICollidable
+	{
+	protected:
+		Collider* collider;
+	public:
+		virtual void OnCollision(HitInfo) = 0;
+		virtual Collider* GetCollider() = 0;
+	};
 
-class Collider
-{
-	int actorId;
-	std::vector<Vector2> collider;
-	HitInfo hit;
+	class Collider
+	{
+		int actorId;
+		std::vector<Vector2> collider;
+		HitInfo hit;
 
-public:
-	Collider();
-	Collider(int _parentId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo));
-	~Collider();
+	public:
+		Collider();
+		Collider(int _parentId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo));
+		~Collider();
 
-	//CollisionCallback OnCollisionCallback;
-	void (Actor::*OnCollisionCallback)(HitInfo);
-	//std::vector<void(*)(HitInfo)> CallbackList;//no usar lista en este caso
+		//CollisionCallback OnCollisionCallback;
+		void (Actor::* OnCollisionCallback)(HitInfo);
+		//std::vector<void(*)(HitInfo)> CallbackList;//no usar lista en este caso
 
-	void Collide(HitInfo);
+		void Collide(HitInfo);
 
-	std::vector<Vector2> GetCollider();
-	int GetId();
-};
+		std::vector<Vector2> GetCollider();
+		int GetId();
+	};
+}
 

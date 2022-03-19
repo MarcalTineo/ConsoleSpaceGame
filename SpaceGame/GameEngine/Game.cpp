@@ -1,38 +1,47 @@
 #include "Game.h"
 
-Vector2 Game::GetSize()
+namespace ConsoleEngine
 {
-	return size;
-}
+	Vector2 Game::GetSize()
+	{
+		return size;
+	}
 
-Game::Game()
-{
-	isAlive = true;
-}
+	Scene* Game::GetScene()
+	{
+		return scene;
+	}
 
-Game::~Game()
-{
-}
+	Game::Game()
+	{
+		isAlive = true;
+		scene = new Scene();
+	}
 
-bool Game::IsAlive()
-{
-	return isAlive;
-}
+	Game::~Game()
+	{
+		delete scene;
+	}
 
-void Game::Start()
-{
-}
+	bool Game::IsAlive()
+	{
+		return isAlive;
+	}
 
-void Game::Update(float dt)
-{
-}
+	void Game::Start()
+	{
+	}
 
-void Game::Draw()
-{
-}
+	void Game::Update(float dt)
+	{
+	}
 
-void Game::Kill()
-{
-	isAlive = false;
-}
+	void Game::Draw()
+	{
+	}
 
+	void Game::Kill()
+	{
+		isAlive = false;
+	}
+}

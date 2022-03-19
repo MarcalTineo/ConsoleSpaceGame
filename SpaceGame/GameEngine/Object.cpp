@@ -1,28 +1,30 @@
 #include "Object.h"
 
 
-
-Object::Object()
+namespace ConsoleEngine
 {
-	position = Vector2::Zero();
-	isActive = true;
-}
+	Object::Object()
+	{
+		position = Vector2::Zero();
+		isActive = true;
+	}
 
-Object::~Object()
-{
-}
+	Object::~Object()
+	{
+	}
 
-bool Object::IsActive()
-{
-	return isActive;
-}
+	bool Object::IsActive()
+	{
+		return isActive;
+	}
 
-void Object::SetActive(bool active)
-{
-	isActive = active;
-}
+	void Object::SetActive(bool active)
+	{
+		isActive = active;
+	}
 
-int Object::GetId()
-{
-	return id;
+	int Object::GetId()
+	{
+		return id;
+	}
 }
