@@ -4,6 +4,7 @@
 #include <string>
 #include "Collider.h"
 #include "Helpers.h"
+#include "ICollidable.h"
 
 namespace ConsoleEngine
 {
@@ -14,7 +15,7 @@ namespace ConsoleEngine
 		virtual void Draw() = 0;
 	};
 
-	class Actor : public Object, IActor, ICollidable
+	class Actor : public Object, public ICollidable, public IActor
 	{
 	protected:
 		std::string tag;
@@ -29,6 +30,10 @@ namespace ConsoleEngine
 		// Heredado vía ICollidable
 		virtual void OnCollision(HitInfo) override;
 		virtual Collider* GetCollider() override;
+
+		// Inherited via IActor
+		virtual void Update(float) override;
+		virtual void Draw() override;
 	};
 }
 

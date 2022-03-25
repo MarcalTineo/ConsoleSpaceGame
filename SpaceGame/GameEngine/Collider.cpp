@@ -6,21 +6,14 @@ namespace ConsoleEngine
 	{
 	}
 
-	Collider::Collider(int _actorId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo))
+	Collider::Collider(int _actorId, std::vector<Vector2> _collider)
 	{
 		actorId = _actorId;
 		collider = _collider;
-		OnCollisionCallback = CollisionCallback;
 	}
 
 	Collider::~Collider()
 	{
-		OnCollisionCallback = nullptr;
-	}
-
-	void Collider::Collide(HitInfo hitInfo)
-	{
-		OnCollisionCallback(hitInfo);
 	}
 
 	std::vector<Vector2> Collider::GetCollider()
@@ -31,6 +24,14 @@ namespace ConsoleEngine
 	int Collider::GetId()
 	{
 		return actorId;
+	}
+	void Collider::SetLastHit(HitInfo _lastHit)
+	{
+		lastHit = _lastHit;
+	}
+	HitInfo Collider::GetLastHit()
+	{
+		return lastHit;
 	}
 }
 

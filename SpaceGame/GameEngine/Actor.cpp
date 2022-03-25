@@ -4,10 +4,8 @@ namespace ConsoleEngine
 {
 	Actor::Actor()
 	{
-		
 		isActive = true;
 		collider = new Collider();
-		collider->OnCollisionCallback = OnCollision;
 	}
 
 	Actor::~Actor()
@@ -18,6 +16,14 @@ namespace ConsoleEngine
 	Collider* Actor::GetCollider()
 	{
 		return collider;
+	}
+
+	void Actor::Update(float)
+	{
+	}
+
+	void Actor::Draw()
+	{
 	}
 
 	void Actor::SetTag(std::string _tag)
@@ -38,6 +44,7 @@ namespace ConsoleEngine
 	void Actor::OnCollision(HitInfo)
 	{
 	}
+
 
 }
 

@@ -17,14 +17,15 @@ namespace ConsoleEngine
 		void Create(Actor* actor);
 		void Destroy(Actor* actor);
 
+		void Update();
+
 		std::vector<Actor*> GetAll();
-		std::vector<Actor*> GetAll(type_info type);
+
 		std::vector<Actor*> GetAll(std::string tag);
 
-		Actor* GetFirst(type_info type);
 		Actor* GetFirst(std::string tag);
 
-
+		Actor* GetActor(int id);
 
 	};
 }

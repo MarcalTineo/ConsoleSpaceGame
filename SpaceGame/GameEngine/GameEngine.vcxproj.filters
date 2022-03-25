@@ -83,5 +83,8 @@
     <ClInclude Include="CollisionEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ICollidable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

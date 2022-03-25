@@ -10,36 +10,25 @@ namespace ConsoleEngine
 		int id;
 		std::string tag;
 		HitInfo(int id, std::string tag) : id(id), tag(tag) {};
-	};
-
-	class ICollidable
-	{
-	protected:
-		Collider* collider;
-	public:
-		virtual void OnCollision(HitInfo) = 0;
-		virtual Collider* GetCollider() = 0;
+		HitInfo() : id(0), tag("") {};
 	};
 
 	class Collider
 	{
+	protected:
 		int actorId;
 		std::vector<Vector2> collider;
-		HitInfo hit;
+		HitInfo lastHit;
 
 	public:
 		Collider();
-		Collider(int _parentId, std::vector<Vector2> _collider, void(*CollisionCallback)(HitInfo));
+		Collider(int _parentId, std::vector<Vector2> _collider);
 		~Collider();
-
-		//CollisionCallback OnCollisionCallback;
-		void (Actor::* OnCollisionCallback)(HitInfo);
-		//std::vector<void(*)(HitInfo)> CallbackList;//no usar lista en este caso
-
-		void Collide(HitInfo);
 
 		std::vector<Vector2> GetCollider();
 		int GetId();
+		void SetLastHit(HitInfo);
+		HitInfo GetLastHit();
 	};
 }
 
