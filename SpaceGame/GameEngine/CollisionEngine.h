@@ -7,7 +7,6 @@ namespace ConsoleEngine
 {
 	class CollisionEngine
 	{
-
 	public:
 		CollisionEngine();
 		~CollisionEngine();

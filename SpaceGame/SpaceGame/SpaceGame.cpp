@@ -1,18 +1,23 @@
 #include "SpaceGame.h"
 
-
-
 SpaceGame::SpaceGame()
 {
+	size = Vector2(120, 35);
+	state = State::PLAY;
+	scene = new Scene();
+	Start();
 }
-
 
 SpaceGame::~SpaceGame()
 {
+	delete scene;
 }
 
 void SpaceGame::Start()
 {
+	scene->Create(new Board(size));
+	scene->Create(new PlayerShip(Vector2(20, 20), 5));
+	hud = new HUD(size.x);
 }
 
 void SpaceGame::Update(float dt)
@@ -24,11 +29,8 @@ void SpaceGame::Update(float dt)
 	case SpaceGame::LOAD_XML:
 		break;
 	case SpaceGame::PLAY:
-		for (size_t i = 0; i < sceneElements.size; i++)
-		{
-			if (sceneElements[i].IsActive())
-				sceneElements[i].Update(dt);
-		}
+		scene->Update();
+		this->Game::Update(dt);
 		break;
 	case SpaceGame::GAME_OVER:
 		break;
@@ -47,11 +49,10 @@ void SpaceGame::Draw()
 	case SpaceGame::LOAD_XML:
 		break;
 	case SpaceGame::PLAY:
-		for (size_t i = 0; i < sceneElements.size; i++)
-		{
-			if (sceneElements[i].IsActive())
-				sceneElements[i].Draw();
-		}
+		DrawEngine::GetInstance().InitViewport();
+		this->Game::Draw();
+		hud->Draw();
+		DrawEngine::GetInstance().Flush();
 		break;
 	case SpaceGame::GAME_OVER:
 		break;
@@ -61,7 +62,3 @@ void SpaceGame::Draw()
 	
 }
 
-vector<Actor> SpaceGame::GetSceneElemets()
-{
-	return sceneElements;
-}

@@ -6,6 +6,13 @@ HUD::HUD()
 	highScore = 0;
 }
 
+HUD::HUD(int size)
+{
+	score = 0;
+	highScore = 0;
+	sizeX = size;
+}
+
 HUD::~HUD()
 {
 }
@@ -22,14 +29,14 @@ void HUD::Draw()
 
 void HUD::DrawHighScore()
 {
-	DrawEngine::GetInstance().Write((char*)"HIGHSCORE: ", 11, 5, 1);
-	DrawEngine::GetInstance().Write((char*)Helpers::ScoreToString(highScore), 4, 16, 1);
+	DrawEngine::GetInstance().Write((char*)"HIGHSCORE: ", 11, 10, 1);
+	DrawEngine::GetInstance().Write((char*)Helpers::ScoreToString(highScore), 4, 21, 1);
 }
 
 void HUD::DrawScore()
 {
-	DrawEngine::GetInstance().Write((char*)"SCORE: ", 7, 44, 1);
-	DrawEngine::GetInstance().Write((char*)Helpers::ScoreToString(score), 4, 51, 1);
+	DrawEngine::GetInstance().Write((char*)"SCORE: ", 7, sizeX - 20, 1);
+	DrawEngine::GetInstance().Write((char*)Helpers::ScoreToString(score), 4, sizeX - 13, 1);
 }
 
 int HUD::GetScore()

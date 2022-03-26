@@ -18,14 +18,6 @@ namespace ConsoleEngine
 		return collider;
 	}
 
-	void Actor::Update(float)
-	{
-	}
-
-	void Actor::Draw()
-	{
-	}
-
 	void Actor::SetTag(std::string _tag)
 	{
 		tag = _tag;
@@ -44,8 +36,6 @@ namespace ConsoleEngine
 	void Actor::OnCollision(HitInfo)
 	{
 	}
-
-
 }
 
 

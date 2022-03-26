@@ -2,6 +2,7 @@
 #include <DrawEngine.h>
 #include <Vector2.h>
 #include <Actor.h>
+using namespace ConsoleEngine;
 
 class Board : public Actor
 {
@@ -35,5 +36,8 @@ public:
 	void DrawMiddleLine(char c, int line);
 
 	bool InsideBorders(Vector2 position);
+
+	// Heredado vía Actor
+	virtual void OnCollision(HitInfo) override;
 };
 

@@ -11,6 +11,12 @@ namespace ConsoleEngine
 
 	Scene::~Scene()
 	{
+		for (int i = 0; i < actors.size(); i++)
+			delete actors[i];
+		for (int i = 0; i < actorsToAdd.size(); i++)
+			delete actorsToAdd[i];
+		for (int i = 0; i < actorsToDestroy.size(); i++)
+			delete actorsToDestroy[i];
 	}
 
 	void Scene::Create(Actor* actor)
@@ -25,14 +31,28 @@ namespace ConsoleEngine
 
 	void Scene::Update()
 	{
+		//Destroy actors
 		for (Actor* actorToDestroy : actorsToDestroy)
 		{
-			for (Actor* actor : actors)
+			for (int i = 0; i < actors.size(); i++)
 			{
-				if (actorToDestroy == actor)
-					//erasea
+				if (actorToDestroy == actors[i])
+				{
+					actors.erase(actors.begin() + i);
+					delete actorToDestroy;
+					break;
+				}
 			}
 		}
+		actorsToDestroy.clear();
+
+		//add new actors
+		for (Actor* actorToAdd : actorsToAdd)
+		{
+			actorToAdd->SetActive(true);
+			actors.push_back(actorToAdd);
+		}
+		actorsToAdd.clear();
 	}
 
 	std::vector<Actor*> Scene::GetAll()
@@ -68,5 +88,15 @@ namespace ConsoleEngine
 			if (actor->GetId() == id)
 				return actor;
 		}
+	}
+
+	bool Scene::IsDestroying(Actor* _actor)
+	{
+		for (Actor* actor : actorsToDestroy)
+		{
+			if (actor == _actor)
+				return true;
+		}
+		return false;
 	}
 }

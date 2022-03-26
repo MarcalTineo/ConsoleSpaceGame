@@ -34,10 +34,20 @@ namespace ConsoleEngine
 
 	void Game::Update(float dt)
 	{
+		for (Actor* actor : scene->GetAll())
+		{
+			if (actor->IsActive())
+				actor->Update(dt);
+		}
 	}
 
 	void Game::Draw()
 	{
+		for (Actor* actor : scene->GetAll())
+		{
+			if (actor->IsActive())
+				actor->Draw();
+		}
 	}
 
 	void Game::Kill()

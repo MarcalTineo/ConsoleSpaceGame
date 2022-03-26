@@ -22,7 +22,6 @@ namespace ConsoleEngine
 		MoveWindow(console, r.left, r.top, 1140, 800, TRUE);
 
 		ShowConsoleCursor(false);
-
 	}
 
 	//credit: Capitain Oblivious - stack overflow
@@ -60,8 +59,7 @@ namespace ConsoleEngine
 
 	void DrawEngine::Flush()
 	{
-		COORD coord = { (SHORT)0, (SHORT)0 };
-		SetConsoleCursorPosition(hConsole, coord);
+		SetCursorPosition(0, 0);
 		std::string out = "";
 		int lastColor = 15;
 		SetConsoleTextAttribute(hConsole, lastColor);
@@ -77,7 +75,6 @@ namespace ConsoleEngine
 			out += viewport[i];
 		}
 		std::cout << out;
-
 	}
 
 	void DrawEngine::InitViewport()

@@ -28,12 +28,12 @@ namespace ConsoleEngine
 		bool CompareTag(std::string tag);
 
 		// Heredado vía ICollidable
-		virtual void OnCollision(HitInfo) override;
+		virtual void OnCollision(HitInfo) = 0;
 		virtual Collider* GetCollider() override;
 
 		// Inherited via IActor
-		virtual void Update(float) override;
-		virtual void Draw() override;
+		virtual void Update(float) = 0;
+		virtual void Draw() = 0;
 	};
 }
 

@@ -5,12 +5,14 @@
 #include "Input.h"
 #include "DrawEngine.h"
 #include "Game.h"
+#include "CollisionEngine.h"
 
 namespace ConsoleEngine
 {
 	class Engine
 	{
 	protected:
+		//CollisionEngine* collisionEngine;
 		static Game* currentGame;
 	public:
 		static Game* GetGame()

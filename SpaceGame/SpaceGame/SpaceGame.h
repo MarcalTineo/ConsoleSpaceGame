@@ -2,8 +2,11 @@
 #include <Game.h>
 #include <vector>
 #include <Actor.h>
+#include "Board.h"
+#include "HUD.h"
+#include "PlayerShip.h"
 
-using namespace std;
+using namespace ConsoleEngine;
 
 class SpaceGame : public Game
 {
@@ -16,16 +19,19 @@ public:
 		GAME_OVER
 	};
 private:
-	vector<Actor> sceneElements;
 	State state;
+	HUD* hud;
 public:
 	SpaceGame();
 	~SpaceGame();
 
 	virtual void Start() override;
+
 	virtual void Update(float dt) override;
+
 	virtual void Draw() override;
 
-	vector<Actor> GetSceneElemets();
+
 };
+
 

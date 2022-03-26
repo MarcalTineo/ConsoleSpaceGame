@@ -7,7 +7,6 @@ namespace ConsoleEngine
 	{
 	}
 
-
 	CollisionEngine::~CollisionEngine()
 	{
 	}
@@ -26,7 +25,9 @@ namespace ConsoleEngine
 				if (CheckCollision(current->GetCollider(), compare->GetCollider()))
 				{
 					current->OnCollision(HitInfo(compare->GetId(), compare->GetTag()));
-					
+					compare->OnCollision(HitInfo(current->GetId(), current->GetTag()));
+					current->GetCollider()->SetLastHit(HitInfo(compare->GetId(), compare->GetTag()));
+					compare->GetCollider()->SetLastHit(HitInfo(current->GetId(), current->GetTag()));
 				}
 			}
 		}

@@ -7,8 +7,6 @@ namespace ConsoleEngine
 {
 	class IGame
 	{
-		bool isAlive;
-
 		virtual bool IsAlive() = 0;
 
 		virtual void Start() = 0;

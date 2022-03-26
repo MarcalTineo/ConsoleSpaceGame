@@ -1,9 +1,7 @@
 #include <Engine.h>
 #include <fstream>
-#include <string>
-#include <vector>
+#include "SpaceGame.h"
 
-using namespace ConsoleEngine;
 
 //delegates
 //struct HitInfo
@@ -57,5 +55,7 @@ int main()
 	}*/
 	
 	std::cout << "slfdjhseogs";
-	//Engine* engine = new Engine(new SnakeGame(), 60);
+	Game* gameToPlay = new SpaceGame();
+	Engine* engine = new ConsoleEngine::Engine(gameToPlay, 10);
+	//delete engine;
 }

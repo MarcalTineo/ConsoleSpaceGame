@@ -2,18 +2,24 @@
 #include <Actor.h>
 #include <DrawEngine.h>
 #include <Helpers.h>
+using namespace ConsoleEngine;
 
-class HUD : public Actor
+class HUD : public Object, IActor
 {
 	int score;
 	int highScore;
+	int sizeX;
+
+
 public:
 	HUD();
+	HUD(int size);
 	~HUD();
 
 	virtual void Update(float dt) override;
 
 	virtual void Draw() override;
+
 	void DrawHighScore();
 	void DrawScore();
 
@@ -23,5 +29,7 @@ public:
 	void SetHighScore();
 
 	void AddScore(int n);
+
+	
 };
 

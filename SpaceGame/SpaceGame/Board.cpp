@@ -7,6 +7,7 @@ Board::~Board()
 
 void Board::Update(float dt)
 {
+	
 }
 
 void Board::Draw()
@@ -36,4 +37,8 @@ void Board::DrawMiddleLine(char c, int line)
 bool Board::InsideBorders(Vector2 position)
 {
 	return position.x > 0 && position.x < size.x - 1 && position.y > 3 && position.y < size.y - 1;
+}
+
+void Board::OnCollision(HitInfo)
+{
 }
