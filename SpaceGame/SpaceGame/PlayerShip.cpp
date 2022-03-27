@@ -13,6 +13,10 @@ PlayerShip::PlayerShip(Vector2 _position, float _speed)
 	forward = Vector2::Zero();
 	timer = 0;
 	speed = _speed;
+	std::vector<Vector2> col = std::vector<Vector2>();
+	col.push_back(Vector2::Zero());
+	collider->SetCollider(col);
+
 }
 
 PlayerShip::~PlayerShip()
@@ -28,6 +32,10 @@ void PlayerShip::Update(float dt)
 	{
 		timer -= 1.0f / speed;
 		position += forward;
+	}
+	if (Input::GetInstance().GetKeyDown(VK_SPACE))
+	{
+		Engine::GetGame()->GetScene()->Create(new Bullet(position + Vector2::Right(), 20, true));
 	}
 
 }

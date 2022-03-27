@@ -12,7 +12,7 @@ namespace ConsoleEngine
 	{
 		size = Vector2(_size.x + 1, _size.y);
 		viewport = new char[(size.x * size.y) + 1];
-		viewportColors = new char[((size.x + 1) * size.y) + 1];
+		viewportColors = new char[(size.x * size.y) + 1];
 		for (int i = 0; i < size.x * size.y; i++)
 			viewportColors[i] = defaultColor;
 		hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

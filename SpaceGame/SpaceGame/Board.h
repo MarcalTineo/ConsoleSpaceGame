@@ -23,8 +23,10 @@ class Board : public Actor
 	};
 
 public:
-	Board(Vector2 size) : size(size) {};
+	Board(Vector2 size);
 	~Board();
+
+	void GenerateCollider();
 
 	// Inherited via IActor
 	virtual void Update(float dt) override;

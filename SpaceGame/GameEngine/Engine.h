@@ -12,7 +12,7 @@ namespace ConsoleEngine
 	class Engine
 	{
 	protected:
-		//CollisionEngine* collisionEngine;
+		CollisionEngine* collisionEngine;
 		static Game* currentGame;
 	public:
 		static Game* GetGame()

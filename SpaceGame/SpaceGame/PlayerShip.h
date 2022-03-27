@@ -2,6 +2,7 @@
 #include <Actor.h>
 #include <DrawEngine.h>
 #include <Input.h>
+#include "Bullet.h"
 
 using namespace ConsoleEngine;
 

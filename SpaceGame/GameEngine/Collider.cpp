@@ -21,6 +21,11 @@ namespace ConsoleEngine
 		return collider;
 	}
 
+	void Collider::SetCollider(std::vector<Vector2> _collider)
+	{
+		collider = _collider;
+	}
+
 	int Collider::GetId()
 	{
 		return actorId;

@@ -1,4 +1,6 @@
 #include "Scene.h"
+#include <iostream>
+#include "DrawEngine.h"
 
 namespace ConsoleEngine
 {

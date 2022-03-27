@@ -1,7 +1,6 @@
 #pragma once
 #include "Actor.h"
 #include "Collider.h"
-#include "Engine.h"
 
 namespace ConsoleEngine
 {
@@ -13,7 +12,7 @@ namespace ConsoleEngine
 
 		void Update();
 
-		bool CheckCollision(Collider*, Collider*);
+		bool CheckCollision(Actor*, Actor*);
 	};
 
 }

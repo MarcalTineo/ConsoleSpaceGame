@@ -10,14 +10,14 @@ namespace ConsoleEngine
 		FPS = fps;
 		deltaSeconds = 1.0 / FPS;
 		dt = 0;
-		//collisionEngine = new CollisionEngine();
+		collisionEngine = new CollisionEngine();
 		RunGame();
 	}
 
 	Engine::~Engine()
 	{
 		delete currentGame;
-		//delete collisionEngine;
+		delete collisionEngine;
 	}
 
 	void Engine::RunGame()
@@ -37,7 +37,7 @@ namespace ConsoleEngine
 
 				nextTime += (double)deltaSeconds * 1000.0f;
 				count++;
-				//collisionEngine->Update();
+				collisionEngine->Update();
 				currentGame->Update(deltaSeconds);
 				currentGame->Draw();
 #ifdef _DEBUG

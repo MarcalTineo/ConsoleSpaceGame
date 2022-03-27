@@ -26,6 +26,7 @@ namespace ConsoleEngine
 		~Collider();
 
 		std::vector<Vector2> GetCollider();
+		void SetCollider(std::vector<Vector2> _collider);
 		int GetId();
 		void SetLastHit(HitInfo);
 		HitInfo GetLastHit();

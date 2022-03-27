@@ -56,6 +56,6 @@ int main()
 	
 	std::cout << "slfdjhseogs";
 	Game* gameToPlay = new SpaceGame();
-	Engine* engine = new ConsoleEngine::Engine(gameToPlay, 10);
+	Engine* engine = new ConsoleEngine::Engine(gameToPlay, 20);
 	//delete engine;
 }

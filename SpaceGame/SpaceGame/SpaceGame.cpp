@@ -31,6 +31,8 @@ void SpaceGame::Update(float dt)
 	case SpaceGame::PLAY:
 		scene->Update();
 		this->Game::Update(dt);
+		for(Actor* actor : scene->GetAll())
+		std::cout << actor->GetTag();
 		break;
 	case SpaceGame::GAME_OVER:
 		break;
