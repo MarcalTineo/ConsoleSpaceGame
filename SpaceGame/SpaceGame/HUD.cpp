@@ -2,19 +2,17 @@
 
 HUD::HUD()
 {
-	score = 0;
-	highScore = 0;
-}
-
-HUD::HUD(int size)
-{
-	score = 0;
-	highScore = 0;
-	sizeX = size;
 }
 
 HUD::~HUD()
 {
+}
+
+void HUD::Start()
+{
+	id = Helpers::GenerateId();
+	score = 0;
+	highScore = 0;
 }
 
 void HUD::Update(float dt)
@@ -63,3 +61,5 @@ void HUD::AddScore(int n)
 {
 	score += n;
 }
+
+

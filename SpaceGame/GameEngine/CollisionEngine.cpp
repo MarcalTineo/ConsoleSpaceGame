@@ -16,16 +16,10 @@ namespace ConsoleEngine
 		std::vector<Actor*> actors = Engine::GetGame()->GetScene()->GetAll();
 		for (int i = 0; i < actors.size(); i++)
 		{
-			//std::cout << actors[i]->GetTag();
-			//Actor* current = actors[i];
-			for (int j = i; j < actors.size(); j++)
+			for (int j = i + 1; j < actors.size(); j++)
 			{
-				//Actor* compare = actors.at(j);
-				if (actors.at(i)->GetId() == actors.at(j)->GetId())
-					continue;
 				if (CheckCollision(actors.at(i), actors.at(j)))
 				{
-					std::cout << "collision: "<< actors.at(i)->GetTag() << " " << actors.at(j)->GetTag();
 					actors.at(i)->OnCollision(HitInfo(actors.at(j)->GetId(), actors.at(j)->GetTag()));
 					actors.at(j)->OnCollision(HitInfo(actors.at(i)->GetId(), actors.at(i)->GetTag()));
 					actors.at(i)->GetCollider()->SetLastHit(HitInfo(actors.at(j)->GetId(), actors.at(j)->GetTag()));

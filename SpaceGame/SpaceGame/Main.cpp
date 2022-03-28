@@ -53,9 +53,21 @@ int main()
 			std::cout << linea << std::endl;
 		}
 	}*/
+	bool testCharacters = true;
+	if (testCharacters)
+	{
+		for (int i = 0; i < 255; i++)
+		{
+			std::cout << i << ":  " << (char)i << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "slfdjhseogs";
+		Game* gameToPlay = new SpaceGame();
+		Engine* engine = new ConsoleEngine::Engine(gameToPlay, 30);
+		delete engine;
+	}
 	
-	std::cout << "slfdjhseogs";
-	Game* gameToPlay = new SpaceGame();
-	Engine* engine = new ConsoleEngine::Engine(gameToPlay, 20);
-	//delete engine;
+	
 }

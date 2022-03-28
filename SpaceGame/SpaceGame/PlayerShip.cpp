@@ -6,22 +6,21 @@ PlayerShip::PlayerShip()
 
 PlayerShip::PlayerShip(Vector2 _position, float _speed)
 {
-	id = Helpers::GenerateId();
 	position = _position;
-	collider = new Collider();
-	tag = "PLAYER";
-	forward = Vector2::Zero();
-	timer = 0;
 	speed = _speed;
-	std::vector<Vector2> col = std::vector<Vector2>();
-	col.push_back(Vector2::Zero());
-	collider->SetCollider(col);
-
 }
 
 PlayerShip::~PlayerShip()
 {
 	delete collider;
+}
+
+void PlayerShip::Start()
+{
+	tag = "PLAYER";
+	forward = Vector2::Zero();
+	timer = 0;
+	collider = new Collider(id, GenerateCollider());
 }
 
 void PlayerShip::Update(float dt)
@@ -35,7 +34,7 @@ void PlayerShip::Update(float dt)
 	}
 	if (Input::GetInstance().GetKeyDown(VK_SPACE))
 	{
-		Engine::GetGame()->GetScene()->Create(new Bullet(position + Vector2::Right(), 20, true));
+		Engine::GetGame()->GetScene()->Create(new Bullet(position + Vector2::Right()*3, 20, true));
 	}
 
 }
@@ -55,11 +54,49 @@ void PlayerShip::UpdateInput()
 }
 
 void PlayerShip::Draw()
-{
-	DrawEngine::GetInstance().DrawAtPos('>', position.x, position.y);
+{/*
+	 |\
+	[=O}>
+	 |/
+*/
+	for (int i = 0; i < modelSize.y; i++)
+	{
+		for (int j = 0; j < modelSize.x; j++)
+		{
+			int posX = position.x + j - modelOffset.x;
+			int posY = position.y + i - modelOffset.y;
+			char partToDraw = model[i * modelSize.x + j];
+			if(partToDraw != '0')
+				DrawEngine::GetInstance().DrawAtPos(partToDraw, posX, posY, 14);
+		}
+	}
+	/*for (Vector2 col : collider->GetCollider())
+		DrawEngine::GetInstance().DrawAtPos(254, position.x + col.x, position.y + col.y, 10);*/
 }
 
-void PlayerShip::OnCollision(HitInfo)
+void PlayerShip::OnCollision(HitInfo hit)
 {
+	if (hit.tag == "BOARD")
+	{
+		position -= forward;
+	}
 }
+
+
+std::vector<Vector2> PlayerShip::GenerateCollider()
+{
+	std::vector<Vector2> col = std::vector<Vector2>();
+	for (int i = 0; i < modelSize.y; i++)
+	{
+		for (int j = 0; j < modelSize.x; j++)
+		{
+			int posX = j - modelOffset.x;
+			int posY = i - modelOffset.y;
+			if (model[i * modelSize.x + j] != '0')
+				col.push_back(Vector2(posX, posY));
+		}
+	}
+	return col;
+}
+
 

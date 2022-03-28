@@ -11,6 +11,7 @@ namespace ConsoleEngine
 	class IActor
 	{
 	public:
+		virtual void Start() = 0;
 		virtual void Update(float) = 0;
 		virtual void Draw() = 0;
 	};
@@ -32,6 +33,7 @@ namespace ConsoleEngine
 		virtual Collider* GetCollider() override;
 
 		// Inherited via IActor
+		virtual void Start() = 0;
 		virtual void Update(float) = 0;
 		virtual void Draw() = 0;
 	};

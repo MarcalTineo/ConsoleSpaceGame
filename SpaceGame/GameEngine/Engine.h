@@ -26,6 +26,7 @@ namespace ConsoleEngine
 		float dt;
 
 		long long nextTime;
+		long long lastFrameTime;
 
 		Engine(Game* game, int fps);
 		~Engine();

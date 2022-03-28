@@ -29,6 +29,7 @@ namespace ConsoleEngine
 	void Scene::Destroy(Actor* actor)
 	{
 		actorsToDestroy.push_back(actor);
+		actor->SetActive(false);
 	}
 
 	void Scene::Update()
@@ -52,6 +53,8 @@ namespace ConsoleEngine
 		for (Actor* actorToAdd : actorsToAdd)
 		{
 			actorToAdd->SetActive(true);
+			actorToAdd->SetId(Helpers::GenerateId());
+			actorToAdd->Start();
 			actors.push_back(actorToAdd);
 		}
 		actorsToAdd.clear();

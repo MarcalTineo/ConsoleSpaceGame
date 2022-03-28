@@ -13,11 +13,11 @@ class HUD : public Object, IActor
 
 public:
 	HUD();
-	HUD(int size);
+	HUD(int size) : sizeX(size) {};
 	~HUD();
-
+	// Heredado vía IActor
+	virtual void Start() override;
 	virtual void Update(float dt) override;
-
 	virtual void Draw() override;
 
 	void DrawHighScore();
@@ -31,5 +31,8 @@ public:
 	void AddScore(int n);
 
 	
+
+	
+
 };
 

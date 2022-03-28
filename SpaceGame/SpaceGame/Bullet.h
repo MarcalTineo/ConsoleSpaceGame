@@ -17,6 +17,8 @@ public:
 
 	// Heredado vía Actor
 	virtual void OnCollision(HitInfo) override;
+	virtual void Start() override;
+	void GenerateCollider();
 	virtual void Update(float) override;
 	virtual void Draw() override;
 };

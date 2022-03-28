@@ -27,4 +27,8 @@ namespace ConsoleEngine
 	{
 		return id;
 	}
+	void Object::SetId(int _id)
+	{
+		id = _id;
+	}
 }

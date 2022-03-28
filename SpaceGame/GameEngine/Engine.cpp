@@ -26,24 +26,24 @@ namespace ConsoleEngine
 		Helpers::InitRandomSeed();
 		initTime = GetTime();
 		nextTime = GetTime();
-		int count = 0;
+		lastFrameTime = 0;
 		while (currentGame->IsAlive())
 		{
-			double currentTime = GetTime();
+			long long currentTime = GetTime();
 			if (currentTime >= nextTime)
 			{
 				if (Input::GetInstance().GetKey(VK_ESCAPE))
 					currentGame->Kill();
-
-				nextTime += (double)deltaSeconds * 1000.0f;
-				count++;
-				collisionEngine->Update();
-				currentGame->Update(deltaSeconds);
-				currentGame->Draw();
 #ifdef _DEBUG
-				std::cout << "Frames: " << count << std::endl;
-				std::cout << "Miliseconds: " << GetTime() - initTime << std::endl;
+				std::cout << "Time: " << currentTime - lastFrameTime << "ms" << std::endl;
+				/*std::cout << "Frames: " << count << std::endl;
+				std::cout << "Miliseconds: " << GetTime() - initTime << std::endl;*/
+				lastFrameTime = currentTime;
 #endif
+				nextTime += (double)deltaSeconds * 1000.0f;
+				currentGame->Update(deltaSeconds);
+				collisionEngine->Update();
+				currentGame->Draw();
 				Input::GetInstance().ResetInput();
 			}
 			Input::GetInstance().UpdateInput();

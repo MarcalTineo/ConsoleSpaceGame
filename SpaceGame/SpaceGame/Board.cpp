@@ -1,15 +1,6 @@
 #include "Board.h"
 
 
-Board::Board(Vector2 _size)
-{
-	size = _size;
-	collider = new Collider();
-	GenerateCollider();
-	position = Vector2::Zero();
-	tag = "BOARD";
-}
-
 Board::~Board()
 {
 	delete collider;
@@ -27,7 +18,14 @@ void Board::GenerateCollider()
 	}
 	for (int i = 0; i < size.x; i++)
 		col.push_back(Vector2(i, size.y - 1));
-	collider->SetCollider(col);
+	collider = new Collider(id, col);
+}
+
+void Board::Start()
+{
+	GenerateCollider();
+	position = Vector2::Zero();
+	tag = "BOARD";
 }
 
 void Board::Update(float dt)
@@ -44,8 +42,8 @@ void Board::Draw()
 	for (int i = 4; i < size.y; i++)
 		DrawFullLine((char)boardParts::I_Vertical, ' ', (char)boardParts::I_Vertical, i);
 	DrawFullLine((char)boardParts::L_DownLeft, (char)boardParts::I_Horizontal, (char)boardParts::L_DownRight, size.y - 1);
-	for (Vector2 col : collider->GetCollider())
-		DrawEngine::GetInstance().DrawAtPos(254, position.x + col.x, position.y + col.y, 10);
+	/*for (Vector2 col : collider->GetCollider())
+		DrawEngine::GetInstance().DrawAtPos(254, position.x + col.x, position.y + col.y, 10);*/
 }
 
 void Board::DrawFullLine(char first, char middle, char last, int line)

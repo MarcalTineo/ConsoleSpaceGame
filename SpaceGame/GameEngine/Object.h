@@ -16,5 +16,6 @@ namespace ConsoleEngine
 		bool IsActive();
 		void SetActive(bool active);
 		int GetId();
+		void SetId(int);
 	};
 }

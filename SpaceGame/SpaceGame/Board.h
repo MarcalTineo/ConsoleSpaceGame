@@ -23,12 +23,13 @@ class Board : public Actor
 	};
 
 public:
-	Board(Vector2 size);
+	Board(Vector2 size) : size(size) {};
 	~Board();
 
 	void GenerateCollider();
 
-	// Inherited via IActor
+	virtual void Start() override;
+
 	virtual void Update(float dt) override;
 
 	virtual void Draw() override;
@@ -39,7 +40,6 @@ public:
 
 	bool InsideBorders(Vector2 position);
 
-	// Heredado vía Actor
 	virtual void OnCollision(HitInfo) override;
 };
 

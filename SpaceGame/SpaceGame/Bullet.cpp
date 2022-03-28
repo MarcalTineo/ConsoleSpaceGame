@@ -9,7 +9,6 @@ Bullet::Bullet()
 
 Bullet::Bullet(Vector2 _position, float _speed, bool isPlayerBullet)
 {
-	timer = 0;
 	speed = _speed;
 	position = _position;
 	if (isPlayerBullet)
@@ -22,12 +21,6 @@ Bullet::Bullet(Vector2 _position, float _speed, bool isPlayerBullet)
 		forward = -Vector2::Right();
 		tag = "ENEMY_BULLET";
 	}
-	collider = new Collider();
-	std::vector<Vector2> col = std::vector<Vector2>();
-	col.push_back(Vector2::Zero());
-	collider->SetCollider(col);
-	
-	
 }
 
 Bullet::~Bullet()
@@ -37,8 +30,20 @@ Bullet::~Bullet()
 
 void Bullet::OnCollision(HitInfo)
 {
-	std::cout << "collision";
 	Engine::GetGame()->GetScene()->Destroy(this);
+}
+
+void Bullet::Start()
+{
+	timer = 0;
+	GenerateCollider();
+}
+
+void Bullet::GenerateCollider()
+{
+	std::vector<Vector2> col = std::vector<Vector2>();
+	col.push_back(Vector2::Zero());
+	collider = new Collider(id, col);
 }
 
 void Bullet::Update(float dt)
@@ -53,7 +58,5 @@ void Bullet::Update(float dt)
 
 void Bullet::Draw()
 {
-	DrawEngine::GetInstance().DrawAtPos('.', position.x, position.y);
-	/*for (Vector2 col : collider->GetCollider())
-		DrawEngine::GetInstance().DrawAtPos(254, position.x + col.x, position.y + col.y, 10);*/
+	DrawEngine::GetInstance().DrawAtPos('-', position.x, position.y, 2);
 }

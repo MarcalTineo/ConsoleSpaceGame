@@ -5,6 +5,8 @@
 #include "Board.h"
 #include "HUD.h"
 #include "PlayerShip.h"
+#include "Explosion.h"
+#include "SmallShip.h"
 
 using namespace ConsoleEngine;
 

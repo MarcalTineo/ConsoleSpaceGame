@@ -16,8 +16,9 @@ SpaceGame::~SpaceGame()
 void SpaceGame::Start()
 {
 	scene->Create(new Board(size));
-	scene->Create(new PlayerShip(Vector2(20, 20), 5));
+	scene->Create(new PlayerShip(Vector2(20, 20), 10));
 	hud = new HUD(size.x);
+	hud->Start();
 }
 
 void SpaceGame::Update(float dt)
@@ -31,8 +32,17 @@ void SpaceGame::Update(float dt)
 	case SpaceGame::PLAY:
 		scene->Update();
 		this->Game::Update(dt);
-		for(Actor* actor : scene->GetAll())
-		std::cout << actor->GetTag();
+		if (Input::GetInstance().GetKeyDown('S'))
+		{
+			scene->Create(new SmallShip(Vector2(100, 10), 5, 0));
+			scene->Create(new SmallShip(Vector2(100, 15), 5, 1));
+			scene->Create(new SmallShip(Vector2(100, 20), 5, 2));
+			scene->Create(new SmallShip(Vector2(100, 25), 5, 3));
+		}
+
+
+
+
 		break;
 	case SpaceGame::GAME_OVER:
 		break;
