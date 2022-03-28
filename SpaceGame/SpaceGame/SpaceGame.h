@@ -7,6 +7,9 @@
 #include "PlayerShip.h"
 #include "Explosion.h"
 #include "SmallShip.h"
+#include "EnemyGunship.h"
+#include "EnemyMotherShip.h"
+#include "Laser.h"
 
 using namespace ConsoleEngine;
 

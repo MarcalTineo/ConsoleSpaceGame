@@ -63,7 +63,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "slfdjhseogs";
+		std::cout << "Start Engine";
 		Game* gameToPlay = new SpaceGame();
 		Engine* engine = new ConsoleEngine::Engine(gameToPlay, 30);
 		delete engine;

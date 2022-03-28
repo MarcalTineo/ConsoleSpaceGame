@@ -6,6 +6,8 @@ namespace ConsoleEngine
 {
 	class CollisionEngine
 	{
+
+		Vector2 collisionPoint;
 	public:
 		CollisionEngine();
 		~CollisionEngine();

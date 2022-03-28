@@ -15,11 +15,13 @@ Bullet::Bullet(Vector2 _position, float _speed, bool isPlayerBullet)
 	{
 		forward = Vector2::Right();
 		tag = "PLAYER_BULLET";
+		color = 2;
 	}
 	else
 	{
 		forward = -Vector2::Right();
 		tag = "ENEMY_BULLET";
+		color = 12;
 	}
 }
 
@@ -28,9 +30,15 @@ Bullet::~Bullet()
 	delete collider;
 }
 
-void Bullet::OnCollision(HitInfo)
+void Bullet::OnCollision(HitInfo hit)
 {
-	Engine::GetGame()->GetScene()->Destroy(this);
+	if (hit.tag == "BOARD")
+		Engine::GetGame()->GetScene()->Destroy(this);
+	else if (hit.tag != "PLAYER_BULLET" && hit.tag != "ENEMY_BULLET")
+	{
+		Engine::GetGame()->GetScene()->Destroy(this);
+		Engine::GetGame()->GetScene()->Create(new Explosion(hit.position));
+	}
 }
 
 void Bullet::Start()
@@ -58,5 +66,5 @@ void Bullet::Update(float dt)
 
 void Bullet::Draw()
 {
-	DrawEngine::GetInstance().DrawAtPos('-', position.x, position.y, 2);
+	DrawEngine::GetInstance().DrawAtPos('-', position.x, position.y, color);
 }

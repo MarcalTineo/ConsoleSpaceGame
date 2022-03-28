@@ -1,6 +1,7 @@
 #pragma once
 #include <Actor.h>
 #include <Engine.h>
+#include "Explosion.h"
 using namespace ConsoleEngine;
 
 class Bullet : public Actor
@@ -9,6 +10,7 @@ protected:
 	float timer;
 	float speed;
 	Vector2 forward;
+	int color;
 
 public:
 	Bullet();

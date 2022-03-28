@@ -34,10 +34,12 @@ void SpaceGame::Update(float dt)
 		this->Game::Update(dt);
 		if (Input::GetInstance().GetKeyDown('S'))
 		{
-			scene->Create(new SmallShip(Vector2(100, 10), 5, 0));
+			/*scene->Create(new SmallShip(Vector2(100, 10), 5, 0));
 			scene->Create(new SmallShip(Vector2(100, 15), 5, 1));
 			scene->Create(new SmallShip(Vector2(100, 20), 5, 2));
-			scene->Create(new SmallShip(Vector2(100, 25), 5, 3));
+			scene->Create(new SmallShip(Vector2(100, 25), 5, 3));*/
+			scene->Create(new EnemyMotherShip(Vector2(100, 20), 3));
+			//scene->Create(new Laser(Vector2(100, 20)));
 		}
 
 

@@ -50,14 +50,16 @@ namespace ConsoleEngine
 		actorsToDestroy.clear();
 
 		//add new actors
-		for (Actor* actorToAdd : actorsToAdd)
+		std::vector<Actor*> actorsToAddCopy = actorsToAdd;
+		actorsToAdd.clear();
+		for (Actor* actorToAdd : actorsToAddCopy)
 		{
 			actorToAdd->SetActive(true);
 			actorToAdd->SetId(Helpers::GenerateId());
 			actorToAdd->Start();
 			actors.push_back(actorToAdd);
 		}
-		actorsToAdd.clear();
+		actorsToAddCopy.clear();
 	}
 
 	std::vector<Actor*> Scene::GetAll()

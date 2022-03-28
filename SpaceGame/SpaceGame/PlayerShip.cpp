@@ -36,7 +36,6 @@ void PlayerShip::Update(float dt)
 	{
 		Engine::GetGame()->GetScene()->Create(new Bullet(position + Vector2::Right()*3, 20, true));
 	}
-
 }
 
 void PlayerShip::UpdateInput()

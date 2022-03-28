@@ -175,25 +175,37 @@
     <ClCompile Include="EnemyGunship.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="EnemyMotherShip.cpp" />
     <ClCompile Include="EnemyShip.cpp" />
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="SmallShip.cpp" />
     <ClCompile Include="SpaceGame.cpp" />
+    <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="TinyXML2.cpp" />
+    <ClCompile Include="XMLLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnemyGunship.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyMotherShip.h" />
     <ClInclude Include="EnemyShip.h" />
     <ClInclude Include="Explosion.h" />
+    <ClInclude Include="HealthBar.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="Laser.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="SmallShip.h" />
     <ClInclude Include="SpaceGame.h" />
+    <ClInclude Include="Spawner.h" />
+    <ClInclude Include="TinyXML2.h" />
+    <ClInclude Include="XMLLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
