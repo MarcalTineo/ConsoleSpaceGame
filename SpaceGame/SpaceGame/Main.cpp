@@ -53,7 +53,7 @@ int main()
 			std::cout << linea << std::endl;
 		}
 	}*/
-	bool testCharacters = true;
+	bool testCharacters = false;
 	if (testCharacters)
 	{
 		for (int i = 0; i < 255; i++)

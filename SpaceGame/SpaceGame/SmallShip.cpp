@@ -20,7 +20,7 @@ void SmallShip::Start()
 	tag = "SMALL_ENEMY";
 	collider = new Collider(id, std::vector<Vector2>{Vector2(0, 0), Vector2(1, 0)});
 	forward = -Vector2::Right();
-	color = 13;
+	color = 9;
 }
 
 void SmallShip::Update(float dt)

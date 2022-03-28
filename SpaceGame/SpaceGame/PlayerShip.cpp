@@ -50,7 +50,6 @@ void PlayerShip::UpdateInput()
 		forward -= Vector2::Right();
 	if (Input::GetInstance().GetKey(VK_RIGHT))
 		forward += Vector2::Right();
-	//std::cout << forward.x << " " << forward.y;
 }
 
 void PlayerShip::Draw()

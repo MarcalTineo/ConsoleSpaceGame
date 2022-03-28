@@ -21,6 +21,12 @@ void EnemyGunship::Start()
 
 void EnemyGunship::Update(float dt)
 {
+	timer += dt;
+	if (timer > 1 / speed)
+	{
+		timer -= 1 / speed;
+		position += forward;
+	}
 }
 
 void EnemyGunship::Draw()
