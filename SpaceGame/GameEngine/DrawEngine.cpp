@@ -19,7 +19,7 @@ namespace ConsoleEngine
 		RECT r;
 		HWND console = GetConsoleWindow();
 		GetWindowRect(console, &r);
-		MoveWindow(console, r.left, r.top, 1140, 800, TRUE);
+		MoveWindow(console, 10, 10, 1370, 1000, TRUE);
 
 		ShowConsoleCursor(false);
 	}

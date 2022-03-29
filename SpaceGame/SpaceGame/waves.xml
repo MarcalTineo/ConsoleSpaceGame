@@ -1,0 +1,11 @@
+<PLAY>
+  <WAVE>
+    <POSITION x="100" y="20"/>
+    <DELAY>5</DELAY>
+    <SHIP>
+      <POSITION x="3" y="0"/>
+      <TYPE>GUNSHIP</TYPE>
+      <SPEED>5</SPEED>
+    </SHIP>
+  </WAVE>
+</PLAY>

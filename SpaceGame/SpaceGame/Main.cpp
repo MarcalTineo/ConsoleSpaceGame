@@ -1,35 +1,28 @@
 #include <Engine.h>
 #include <fstream>
 #include "SpaceGame.h"
-
-
-//delegates
-//struct HitInfo
-//{
-//	int info;
-//};
-//
-//
-//class Collider
-//{
-//	HitInfo hit;
-//	void (*OnCollisionCallback)(HitInfo);
-//	std::vector<void(*)(HitInfo)> CallbackList;//no usar lista en este caso
-//
-//	void Update()
-//	{
-//		//check collision
-//		//if collision
-//		{
-//			//rellenar hit
-//			OnCollisionCallback(hit)
-//		}
-//	}
-//
-//};
+#include "XMLLoader.h"
 
 int main()
 {
+	XMLLoader* loader = new XMLLoader();
+	loader->LoadFile();
+
+	bool testCharacters = false;
+	if (testCharacters)
+	{
+		for (int i = 0; i < 255; i++)
+		{
+			std::cout << i << ":  " << (char)i << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Start Engine";
+		Game* gameToPlay = new SpaceGame();
+		Engine* engine = new ConsoleEngine::Engine(gameToPlay, 30);
+		delete engine;
+	}
 	/*
 	std::ofstream myOutputFile("rafa.txt");
 	
@@ -53,21 +46,7 @@ int main()
 			std::cout << linea << std::endl;
 		}
 	}*/
-	bool testCharacters = false;
-	if (testCharacters)
-	{
-		for (int i = 0; i < 255; i++)
-		{
-			std::cout << i << ":  " << (char)i << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "Start Engine";
-		Game* gameToPlay = new SpaceGame();
-		Engine* engine = new ConsoleEngine::Engine(gameToPlay, 30);
-		delete engine;
-	}
+	
 	
 	
 }
