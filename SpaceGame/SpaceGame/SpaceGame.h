@@ -34,7 +34,8 @@ private:
 	MainMenu* mainMenu;
 	MainMenu::PlayMode playmode;
 	PlayerShip* player;
-	float timer;
+	float endGameTimer;
+	float repeatGameTimer;
 	GameOverMenu* gameOverMenu;
 public:
 	SpaceGame();
@@ -43,6 +44,8 @@ public:
 	virtual void Start() override;
 
 	virtual void Update(float dt) override;
+
+	void EndGame();
 
 	void LoadWaves();
 

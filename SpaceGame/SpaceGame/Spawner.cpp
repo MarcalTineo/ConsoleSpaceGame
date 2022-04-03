@@ -22,10 +22,9 @@ void Spawner::Update(float dt)
 		waveIndex++;
 		if (waveIndex>=waves.size())
 		{
+			SetActive(false);
 			if (playMode == MainMenu::PlayMode::LOOP)
 				waveIndex = 0;
-			else
-				SetActive(false);
 		}
 	}
 }
@@ -41,7 +40,6 @@ void Spawner::SpawnWave(Wave wave)
 		Vector2 localPosition = shipData.localPosition;
 		float speed = shipData.speed;
 		Actor* ship;
-		std::cout << shipData.type;
 		Enemy::Type type = shipData.type;
 
 		switch (type)

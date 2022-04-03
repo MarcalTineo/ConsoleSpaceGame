@@ -25,6 +25,7 @@ private:
 	int pointerPosition;
 	int numberOfEntries; 
 	bool allDone;
+	int score;
 public:
 	GameOverMenu();
 	~GameOverMenu();
@@ -35,5 +36,7 @@ public:
 	virtual void Update(float) override;
 	virtual void Draw() override;
 	bool GetAllDone();
+
+	void SetScore(int v) { score = v; }
 };
 

@@ -52,13 +52,22 @@ void GameOverMenu::Update(float)
 void GameOverMenu::Draw()
 {
 	DrawEngine::GetInstance().InitViewport();
+
+	//options
 	DrawEngine::GetInstance().Write("Back To Menu", 55, 25, 11);
 	DrawEngine::GetInstance().Write("Exit", 55, 27, 11);
 	DrawEngine::GetInstance().DrawAtPos(16, 53, 25 + pointerPosition * 2);
+
+	//banner
 	for (int i = 0; i < 11; i++)
 	{
 		DrawEngine::GetInstance().Write(title[i], 45, i+5);
 	}
+
+	//score
+	DrawEngine::GetInstance().Write("SCORE:", 55, 22, 14);
+	DrawEngine::GetInstance().Write(Helpers::ScoreToString(score), 4, 63, 22, 14);
+
 	DrawEngine::GetInstance().Flush();
 
 }

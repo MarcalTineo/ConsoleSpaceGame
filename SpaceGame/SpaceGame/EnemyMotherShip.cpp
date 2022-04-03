@@ -127,7 +127,7 @@ void EnemyMotherShip::ShootLaserUpdate(float dt)
 
 void EnemyMotherShip::CheckLifePoints()
 {
-	if (lifepoints == 0)
+	if (lifepoints <= 0)
 	{
 		Engine::GetGame()->GetScene()->Destroy(this);
 		Engine::GetGame()->GetScene()->Create(new Explosion(position));

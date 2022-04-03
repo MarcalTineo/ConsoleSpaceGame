@@ -110,5 +110,6 @@ namespace ConsoleEngine
 	{
 		for (Actor* actor : actors)
 			Destroy(actor);
+		Update();
 	}
 }

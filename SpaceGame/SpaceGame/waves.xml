@@ -1,5 +1,5 @@
 <PLAY>
-  <numberOfWaves v="7"/>
+  <numberOfWaves v="8"/>
   <wave ships="4" delay="2">
     <position x="100" y="20"/>
     <ship>
@@ -162,12 +162,12 @@
       <speed v="5"/>
     </ship>
     <ship>
-      <position x="2" y="-5"/>
+      <position x="2" y="-7"/>
       <type v ="5"/>
       <speed v="5"/>
     </ship>
     <ship>
-      <position x="2" y="5"/>
+      <position x="2" y="7"/>
       <type v ="5"/>
       <speed v="5"/>
     </ship>

@@ -35,6 +35,7 @@ public:
 
 	void AddScore(int n) { score += n; };
 
+	void ResetScore() { score = 0; };
 	
 
 	
