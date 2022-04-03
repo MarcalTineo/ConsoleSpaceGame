@@ -36,8 +36,11 @@ void Bullet::OnCollision(HitInfo hit)
 		Engine::GetGame()->GetScene()->Destroy(this);
 	else if (hit.tag != "PLAYER_BULLET" && hit.tag != "ENEMY_BULLET")
 	{
-		Engine::GetGame()->GetScene()->Destroy(this);
-		Engine::GetGame()->GetScene()->Create(new Explosion(hit.position));
+		if (!(hit.tag == "PLAYER" && tag == "PLAYER_BULLET"))
+		{
+			Engine::GetGame()->GetScene()->Destroy(this);
+			Engine::GetGame()->GetScene()->Create(new Explosion(hit.position));
+		}
 	}
 }
 

@@ -5,6 +5,18 @@ using namespace ConsoleEngine;
 class Enemy : public Actor
 {
 public:
+	enum Type
+	{
+		MOTHERSHIP = 0,
+		SMALL1, 
+		SMALL2, 
+		SMALL3, 
+		SMALL4, 
+		GUNSHIP, 
+		LASER
+	};
+
+
 	Enemy() {};
 	~Enemy() {};
 

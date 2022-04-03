@@ -1,7 +1,9 @@
 #include "HUD.h"
+#include <Engine.h>
 
 HUD::HUD()
 {
+
 }
 
 HUD::~HUD()
@@ -13,7 +15,10 @@ void HUD::Start()
 	id = Helpers::GenerateId();
 	score = 0;
 	highScore = 0;
+	SetActive(true);
 }
+
+
 
 void HUD::Update(float dt)
 {
@@ -21,8 +26,12 @@ void HUD::Update(float dt)
 
 void HUD::Draw()
 {
-	DrawScore();
-	DrawHighScore();
+	if (isActive)
+	{
+		DrawScore();
+		DrawHighScore();
+		DrawHealtPoints();
+	}
 }
 
 void HUD::DrawHighScore()
@@ -37,29 +46,15 @@ void HUD::DrawScore()
 	DrawEngine::GetInstance().Write((char*)Helpers::ScoreToString(score), 4, sizeX - 13, 1);
 }
 
-int HUD::GetScore()
+void HUD::DrawHealtPoints()
 {
-	return score;
+	int healthPoints = player->GetHealthPoints();
+	if (healthPoints <= 0)
+		DrawEngine::GetInstance().Write("GAME OVER", sizeX / 2 - 5, 1, 15);
+	else
+	{
+		for (int i = 0; i < healthPoints; i++)
+			DrawEngine::GetInstance().DrawAtPos(3, sizeX / 2 - 5 + i * 2, 1, 4);
+	}
+	
 }
-
-int HUD::GetHighScore()
-{
-	return highScore;
-}
-
-void HUD::SetScore(int n)
-{
-	score = n;
-}
-
-void HUD::SetHighScore()
-{
-	highScore = score;
-}
-
-void HUD::AddScore(int n)
-{
-	score += n;
-}
-
-

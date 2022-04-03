@@ -178,10 +178,12 @@
     <ClCompile Include="EnemyMotherShip.cpp" />
     <ClCompile Include="EnemyShip.cpp" />
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="GameOverMenu.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="SmallShip.cpp" />
     <ClCompile Include="SpaceGame.cpp" />
@@ -197,9 +199,11 @@
     <ClInclude Include="EnemyMotherShip.h" />
     <ClInclude Include="EnemyShip.h" />
     <ClInclude Include="Explosion.h" />
+    <ClInclude Include="GameOverMenu.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="SmallShip.h" />
     <ClInclude Include="SpaceGame.h" />

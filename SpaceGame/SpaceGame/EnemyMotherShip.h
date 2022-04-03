@@ -53,7 +53,7 @@ protected:
 
 
 public:
-    EnemyMotherShip(Vector2 position, float speed);
+    EnemyMotherShip(Vector2 position, HUD* hud);
     ~EnemyMotherShip();
 
     virtual void Start() override;

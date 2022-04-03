@@ -38,7 +38,11 @@ namespace ConsoleEngine
 		void Write(char* text, int lenght, int x, int y);
 		void Write(char* text, int lenght, int x, int y, int color);
 
+		void Write(std::string text, int x, int y);
+		void Write(std::string text, int x, int y, int color);
+
 		void Flush();
+		void FastFlush();
 
 		void InitViewport();
 

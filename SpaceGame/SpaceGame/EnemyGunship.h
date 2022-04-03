@@ -26,7 +26,7 @@ protected:
     float shootTimer;
     bool shootSide;
 public:
-    EnemyGunship(Vector2 position, float speed);
+    EnemyGunship(Vector2 position, float speed, HUD* hud);
     ~EnemyGunship();
 
     virtual void Start() override;

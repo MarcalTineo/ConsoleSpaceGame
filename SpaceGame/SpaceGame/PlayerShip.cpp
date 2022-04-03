@@ -21,6 +21,7 @@ void PlayerShip::Start()
 	forward = Vector2::Zero();
 	timer = 0;
 	collider = new Collider(id, GenerateCollider());
+	healthPoints = 5;
 }
 
 void PlayerShip::Update(float dt)
@@ -35,6 +36,12 @@ void PlayerShip::Update(float dt)
 	if (Input::GetInstance().GetKeyDown(VK_SPACE))
 	{
 		Engine::GetGame()->GetScene()->Create(new Bullet(position + Vector2::Right()*3, 20, true));
+	}
+	if (healthPoints <= 0)
+	{
+		Engine::GetGame()->GetScene()->Create(new Explosion(position));
+		SetActive(false);
+		collider->enabled = false;
 	}
 }
 
@@ -78,6 +85,19 @@ void PlayerShip::OnCollision(HitInfo hit)
 	{
 		position -= forward;
 	}
+	if (hit.tag == "ENEMY_BULLET" || hit.tag == "ENEMY_GUNSHIP" || hit.tag == "ENEMY_MOTHERSHIP" || hit.tag == "SMALL_ENEMY")
+	{
+		healthPoints--;
+	}
+	if (hit.tag == "LASER")
+	{
+		healthPoints = 0; 
+	}
+}
+
+int PlayerShip::GetHealthPoints()
+{
+	return healthPoints;
 }
 
 

@@ -5,9 +5,6 @@
 
 int main()
 {
-	XMLLoader* loader = new XMLLoader();
-	loader->LoadFile();
-
 	bool testCharacters = false;
 	if (testCharacters)
 	{

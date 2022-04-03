@@ -2,10 +2,11 @@
 #include <DrawEngine.h>
 #include <Engine.h>
 
-EnemyGunship::EnemyGunship(Vector2 _position, float _speed)
+EnemyGunship::EnemyGunship(Vector2 _position, float _speed, HUD* _hud)
 {
 	position = _position;
 	speed = _speed;
+	hud = _hud;
 }
 
 EnemyGunship::~EnemyGunship()
@@ -22,7 +23,7 @@ void EnemyGunship::Start()
 	reactorOn = true;
 	lifepoints = 5;
 	collider = new Collider(id, GenerateCollider());
-	shootSpeed = 0.5f;
+	shootSpeed = 0.2f;
 	shootTimer = 0;
 	shootSide = false;
 }
@@ -71,6 +72,7 @@ void EnemyGunship::CheckLifePoints()
 	{
 		Engine::GetGame()->GetScene()->Destroy(this);
 		Engine::GetGame()->GetScene()->Create(new Explosion(position));
+		hud->AddScore(20);
 	}
 }
 

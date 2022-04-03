@@ -1,6 +1,7 @@
 #pragma once
 #include "Enemy.h"
 #include "Explosion.h"
+#include "HUD.h"
 
 class EnemyShip :
     public Enemy
@@ -10,6 +11,7 @@ protected:
     float speed;
     float timer;
     int color;
+	HUD* hud;
 public:
     // Heredado vía Enemy
     virtual void Start() override;

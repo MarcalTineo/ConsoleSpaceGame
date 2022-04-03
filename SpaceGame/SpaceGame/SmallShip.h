@@ -15,7 +15,7 @@ protected:
     int color;
     
 public:
-    SmallShip(Vector2 position, float speed, int type);
+    SmallShip(Vector2 position, float speed, int type, HUD* hud);
     ~SmallShip();
     virtual void Start() override;
     virtual void Update(float) override;

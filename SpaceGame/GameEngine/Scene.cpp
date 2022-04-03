@@ -1,6 +1,5 @@
 #include "Scene.h"
 #include <iostream>
-#include "DrawEngine.h"
 
 namespace ConsoleEngine
 {
@@ -105,5 +104,11 @@ namespace ConsoleEngine
 				return true;
 		}
 		return false;
+	}
+
+	void Scene::Clear()
+	{
+		for (Actor* actor : actors)
+			Destroy(actor);
 	}
 }

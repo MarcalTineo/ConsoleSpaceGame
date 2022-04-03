@@ -1,11 +1,184 @@
 <PLAY>
-  <WAVE>
-    <POSITION x="100" y="20"/>
-    <DELAY>5</DELAY>
-    <SHIP>
-      <POSITION x="3" y="0"/>
-      <TYPE>GUNSHIP</TYPE>
-      <SPEED>5</SPEED>
-    </SHIP>
-  </WAVE>
+  <numberOfWaves v="7"/>
+  <wave ships="4" delay="2">
+    <position x="100" y="20"/>
+    <ship>
+      <position x="7" y="0"/>
+      <type v ="1"/>
+      <speed v="10"/>
+    </ship>
+    <ship>
+      <position x="3" y="0"/>
+      <type v ="1"/>
+      <speed v="10"/>
+    </ship>
+    <ship>
+      <position x="-1" y="0"/>
+      <type v ="1"/>
+      <speed v="10"/>
+    </ship>
+    <ship>
+      <position x="-5" y="0"/>
+      <type v ="1"/>
+      <speed v="10"/>
+    </ship>
+  </wave>
+  <wave ships="4" delay="3">
+    <position x="100" y="10"/>
+    <ship>
+      <position x="7" y="0"/>
+      <type v ="2"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="3" y="0"/>
+      <type v ="2"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="-1" y="0"/>
+      <type v ="2"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="-5" y="0"/>
+      <type v ="2"/>
+      <speed v="8"/>
+    </ship>
+  </wave>
+  <wave ships="4" delay="3">
+    <position x="100" y="30"/>
+    <ship>
+      <position x="7" y="0"/>
+      <type v ="3"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="3" y="0"/>
+      <type v ="3"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="-1" y="0"/>
+      <type v ="3"/>
+      <speed v="8"/>
+    </ship>
+    <ship>
+      <position x="-5" y="0"/>
+      <type v ="3"/>
+      <speed v="8"/>
+    </ship>
+  </wave>
+  <wave ships="5" delay="5">
+    <position x="110" y="22"/>
+    <ship>
+      <position x="-4" y="0"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="3"/>
+      <type v ="2"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="3" y="5"/>
+      <type v ="1"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="-3"/>
+      <type v ="2"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="3" y="-5"/>
+      <type v ="1"/>
+      <speed v="5"/>
+    </ship>
+  </wave>
+
+  <wave ships="5" delay="8">
+    <position x="110" y="12"/>
+    <ship>
+      <position x="-4" y="0"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="3"/>
+      <type v ="2"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="3" y="5"/>
+      <type v ="1"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="-3"/>
+      <type v ="2"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="3" y="-5"/>
+      <type v ="1"/>
+      <speed v="5"/>
+    </ship>
+  </wave>
+  <wave ships="3" delay="5">
+    <position x="110" y="20"/>
+    <ship>
+      <position x="-4" y="0"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="3"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="-3"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+  </wave>
+  <wave ships="5" delay="8">
+    <position x="110" y="20"/>
+    <ship>
+      <position x="-4" y="0"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="3"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="0" y="-3"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="2" y="-5"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+    <ship>
+      <position x="2" y="5"/>
+      <type v ="5"/>
+      <speed v="5"/>
+    </ship>
+  </wave>
+
+  <wave ships="1" delay="10">
+    <position x="0" y="0"/>
+    <ship>
+      <position x="100" y="20"/>
+      <type v ="0"/>
+      <speed v="0"/>
+    </ship>
+  </wave>
 </PLAY>

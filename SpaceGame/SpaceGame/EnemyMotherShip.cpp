@@ -2,15 +2,14 @@
 #include <DrawEngine.h>
 #include <Engine.h>
 
-EnemyMotherShip::EnemyMotherShip(Vector2 _position, float _speed)
+EnemyMotherShip::EnemyMotherShip(Vector2 _position, HUD* _hud)
 {
 	position = _position;
-	speed = _speed;
+	hud = _hud;
 }
 
 EnemyMotherShip::~EnemyMotherShip()
 {
-	delete healthBar;
 	delete collider;
 }
 
@@ -36,7 +35,7 @@ void EnemyMotherShip::Start()
 
 	laserTimer = 0;
 	laserOffset = Vector2(-8, 2);
-	laserTimeBetweenShots = 20.0f;
+	laserTimeBetweenShots = 12.0f;
 	laserDuration = 5.0f;
 
 	laser = new Laser(position + laserOffset);
@@ -46,7 +45,7 @@ void EnemyMotherShip::Start()
 std::vector<Vector2> EnemyMotherShip::GenerateCollider()
 {
 	std::vector<Vector2> col = std::vector<Vector2>();
-	for (int i = 0; i < modelSize.y; i++)
+	/*for (int i = 0; i < modelSize.y; i++)
 	{
 		for (int j = 0; j < modelSize.x; j++)
 		{
@@ -54,11 +53,33 @@ std::vector<Vector2> EnemyMotherShip::GenerateCollider()
 			int posY = i - modelOffset.y;
 			if (model[i][j] != '0')
 			{
-				if (!(i == 1 && model[i][j] == '_'))
+				if (!(i == 1 && model[i][j] == '_') && model[i][j] != ' ')
 					col.push_back(Vector2(posX, posY));
 			}
 		}
-	}
+	}*/
+
+	//afegir nomes els punts necesaris optimitza el rendiment
+	for (int i = 7; i <= 13; i++)
+		col.push_back(Vector2(i, 4));
+	for (int i = 7; i <= 13; i++)
+		col.push_back(Vector2(i, -4));
+	col.push_back(Vector2(10, -3));
+	col.push_back(Vector2(10, 3));
+	for (int i = -4; i <= 10; i++)
+		col.push_back(Vector2(i, -2));
+	col.push_back(Vector2(-5, -1));
+	col.push_back(Vector2(-6, -1));
+	col.push_back(Vector2(-7, -1));
+	col.push_back(Vector2(-8, -1));
+	col.push_back(Vector2(-9, -1));
+	col.push_back(Vector2(-7, 1));
+	col.push_back(Vector2(-9, 0));
+	col.push_back(Vector2(-10, 0));
+	col.push_back(Vector2(-7, 0));
+	col.push_back(Vector2(-8, 0));
+	for (int i = -7; i < 10; i++)
+		col.push_back(Vector2(i, 2));
 	return col;
 }
 
@@ -111,6 +132,8 @@ void EnemyMotherShip::CheckLifePoints()
 		Engine::GetGame()->GetScene()->Destroy(this);
 		Engine::GetGame()->GetScene()->Create(new Explosion(position));
 		Engine::GetGame()->GetScene()->Destroy(healthBar);
+		Engine::GetGame()->GetScene()->Destroy(laser);
+		hud->AddScore(100);
 	}
 }
 
@@ -134,6 +157,7 @@ void EnemyMotherShip::Draw()
 				DrawEngine::GetInstance().DrawAtPos(model[i][j], posX, posY, color);
 		}
 	}
+	//Debug collider
 	/*for (Vector2 col : collider->GetCollider())
 		DrawEngine::GetInstance().DrawAtPos(254, position.x + col.x, position.y + col.y, 10);*/
 }

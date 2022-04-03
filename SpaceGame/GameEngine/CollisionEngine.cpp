@@ -30,16 +30,38 @@ namespace ConsoleEngine
 	}
 	bool CollisionEngine::CheckCollision(Actor* coll1, Actor* coll2)
 	{
-		std::vector<Vector2> collider1 = coll1->GetCollider()->GetCollider();
-		std::vector<Vector2> collider2 = coll2->GetCollider()->GetCollider();
-		for (int i = 0; i < collider1.size(); i++)
+		
+		if (!coll1->GetCollider()->enabled || !coll2->GetCollider()->enabled)
+			return false;
+
+
+		///----------------------------------------
+		//poso aquest codi aqui per no haber de refer tot el sistema de colliders. No es net pero funciona
+		//els lasers no poden funcionar amb l'altre tipus de collider perquè al haber de fer tantes comprocacions com caracters el rendiment es veu altament afectat.
+		if (coll1->CompareTag("LASER"))
 		{
-			for (int j = 0; j < collider2.size(); j++)
+			if (coll2->position.x < coll1->position.x && coll2->position.y >= coll1->position.y - 1 && coll2->position.y <= coll1->position.y + 1)
+				return true;
+		}
+		else if (coll2->CompareTag("LASER"))
+		{
+			if (coll1->position.x < coll2->position.x && coll1->position.y >= coll2->position.y - 1 && coll1->position.y <= coll2->position.y + 1)
+				return true;
+		}
+		///-----------------------------------------
+		else
+		{
+			std::vector<Vector2> collider1 = coll1->GetCollider()->GetCollider();
+			std::vector<Vector2> collider2 = coll2->GetCollider()->GetCollider(); 
+			for (int i = 0; i < collider1.size(); i++)
 			{
-				if (coll1->position + collider1.at(i) == coll2->position + collider2.at(j))
+				for (int j = 0; j < collider2.size(); j++)
 				{
-					collisionPoint = coll1->position + collider1.at(i);
-					return true;
+					if (coll1->position + collider1.at(i) == coll2->position + collider2.at(j))
+					{
+						collisionPoint = coll1->position + collider1.at(i);
+						return true;
+					}
 				}
 			}
 		}

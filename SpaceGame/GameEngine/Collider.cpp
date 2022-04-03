@@ -10,6 +10,7 @@ namespace ConsoleEngine
 	{
 		actorId = _actorId;
 		collider = _collider;
+		enabled = true;
 	}
 
 	Collider::~Collider()

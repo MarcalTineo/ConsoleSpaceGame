@@ -13,10 +13,11 @@ protected:
 	Vector2 forward;
 	float timer;
 	float speed;
-	const std::array<char, 15> model = { '0', '|', '\\', '0', '0', '[', '=', 'O', '}' , '>', '0', '|', '/', '0', '0'};
+	const std::array<char, 15> model = { '0', '|', '\\', '0', '0', '[', '=', 'O', '}' , '>', '0', '|', '/', '0', '0' };
 	const Vector2 modelSize = Vector2(5, 3);
 	const Vector2 modelOffset = Vector2(2, 1);
-	
+	int healthPoints;
+
 public:
 	PlayerShip();
 	PlayerShip(Vector2 _position, float speed);
@@ -32,5 +33,8 @@ public:
 	virtual void Draw() override;
 
 	virtual void OnCollision(HitInfo) override;
+
+	int GetHealthPoints();
+
 };
 

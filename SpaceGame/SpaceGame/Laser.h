@@ -40,10 +40,11 @@ protected:
     std::vector<char> lowerEdge;
 public:
     Laser(Vector2 position);
-    // Heredado vía Enemy
+	~Laser();
     virtual void OnCollision(HitInfo hit);
     virtual void Start() override;
-    std::vector<char> GenerateEdge();
+	std::vector<Vector2> GenerateCollider();
+	std::vector<char> GenerateEdge();
     std::vector<char> GenerateCenter();
     virtual void Update(float dt) override;
     void MoveOneCenter();

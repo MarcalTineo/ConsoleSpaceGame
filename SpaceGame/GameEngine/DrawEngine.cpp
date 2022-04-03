@@ -41,8 +41,11 @@ namespace ConsoleEngine
 
 	void DrawEngine::DrawAtPos(char c, int x, int y, int color)
 	{
-		viewportColors[size.x * y + x] = color;
-		viewport[size.x * y + x] = c;
+		if (x < size.x - 1 && x >= 0 && y >= 0 && y < size.y)
+		{
+			viewportColors[size.x * y + x] = color;
+			viewport[size.x * y + x] = c;
+		}
 	}
 
 	void DrawEngine::Write(char* text, int lenght, int x, int y)
@@ -57,6 +60,19 @@ namespace ConsoleEngine
 			DrawAtPos(text[i], x + i, y, color);
 	}
 
+	void DrawEngine::Write(std::string text, int x, int y)
+	{
+		for (int i = 0; i < text.size(); i++)
+			DrawAtPos(text[i], x + i, y);
+	}
+
+	void DrawEngine::Write(std::string text, int x, int y, int color)
+	{
+		for (int i = 0; i < text.size(); i++)
+			DrawAtPos(text[i], x + i, y, color);
+	}
+
+	//funció optimitzada per fer el menor numero de cout possible
 	void DrawEngine::Flush()
 	{
 		SetCursorPosition(0, 0);
@@ -65,16 +81,25 @@ namespace ConsoleEngine
 		SetConsoleTextAttribute(hConsole, lastColor);
 		for (int i = 0; i < size.x * size.y; i++)
 		{
-			if (viewportColors[i] != lastColor)
+			if (viewport[i] != ' ')
 			{
-				std::cout << out;
-				out = "";
-				SetConsoleTextAttribute(hConsole, viewportColors[i]);
-				lastColor = viewportColors[i];
+				if (viewportColors[i] != lastColor)
+				{
+					std::cout << out;
+					out = "";
+					SetConsoleTextAttribute(hConsole, viewportColors[i]);
+					lastColor = viewportColors[i];
+				}
 			}
 			out += viewport[i];
 		}
 		std::cout << out;
+	}
+
+	void DrawEngine::FastFlush()
+	{
+		SetCursorPosition(0, 0);
+		std::cout << viewport;
 	}
 
 	void DrawEngine::InitViewport()
@@ -83,6 +108,8 @@ namespace ConsoleEngine
 		{
 			if (i % size.x == size.x - 1)
 				viewport[i] = '\n';
+			else
+				viewport[i] = ' ';
 		}
 		viewport[size.x * size.y] = '\0';
 		for (int i = 0; i < size.x * size.y; i++)

@@ -2,11 +2,12 @@
 #include <DrawEngine.h>
 #include <Engine.h>
 
-SmallShip::SmallShip(Vector2 _position, float _speed, int _modelType)
+SmallShip::SmallShip(Vector2 _position, float _speed, int _modelType, HUD* _hud)
 {
 	position = _position;
 	speed = _speed;
 	type = _modelType;
+	hud = _hud;
 }
 
 SmallShip::~SmallShip()
@@ -44,7 +45,13 @@ void SmallShip::OnCollision(HitInfo hit)
 	if (hit.tag == "PLAYER_BULLET")
 	{
 		Engine::GetGame()->GetScene()->Destroy(this); 
+		hud->AddScore(2);
+	}
+	else if (hit.tag == "PLAYER")
+	{
+		Engine::GetGame()->GetScene()->Destroy(this);
 		Engine::GetGame()->GetScene()->Create(new Explosion(position));
+		hud->AddScore(2);
 	}
 	else if (hit.tag == "BOARD")
 	{

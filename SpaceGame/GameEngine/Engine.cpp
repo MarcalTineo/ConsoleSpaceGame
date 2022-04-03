@@ -35,21 +35,21 @@ namespace ConsoleEngine
 				if (Input::GetInstance().GetKey(VK_ESCAPE))
 					currentGame->Kill();
 #ifdef _DEBUG
-				std::cout << "Time: " << currentTime - lastFrameTime << "ms" << std::endl;
-				/*std::cout << "Frames: " << count << std::endl;
-				std::cout << "Miliseconds: " << GetTime() - initTime << std::endl;*/
-				lastFrameTime = currentTime;
+				DrawEngine::GetInstance().SetCursorPosition(0, currentGame->GetSize().y);
+				std::cout << "Frame Time: " << currentTime - lastFrameTime << "ms" << "                    " << std::endl;
+				std::cout << "Scene Actors: " << currentGame->GetScene()->GetAll().size() << "                   " << std::endl;
 #endif
-				nextTime += (double)deltaSeconds * 1000.0f;
+				nextTime = currentTime + (double)deltaSeconds * 1000.0f;
+				float deltaTime = (currentTime - lastFrameTime) * 1000.0f;
 				currentGame->Update(deltaSeconds);
 				collisionEngine->Update();
 				currentGame->Draw();
 				Input::GetInstance().ResetInput();
+				lastFrameTime = currentTime;
 			}
 			Input::GetInstance().UpdateInput();
 		}
 	}
-
 	long long Engine::GetTime()
 	{
 		return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();

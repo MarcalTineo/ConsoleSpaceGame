@@ -10,6 +10,9 @@
 #include "EnemyGunship.h"
 #include "EnemyMotherShip.h"
 #include "Laser.h"
+#include "XMLLoader.h"
+#include "MainMenu.h"
+#include "GameOverMenu.h"
 
 using namespace ConsoleEngine;
 
@@ -26,6 +29,13 @@ public:
 private:
 	State state;
 	HUD* hud;
+	XMLLoader* loader;
+	std::vector<Wave> waves;
+	MainMenu* mainMenu;
+	MainMenu::PlayMode playmode;
+	PlayerShip* player;
+	float timer;
+	GameOverMenu* gameOverMenu;
 public:
 	SpaceGame();
 	~SpaceGame();
@@ -34,7 +44,12 @@ public:
 
 	virtual void Update(float dt) override;
 
+	void LoadWaves();
+
 	virtual void Draw() override;
+
+	HUD* GetHud() { return hud; };
+
 
 
 };

@@ -29,5 +29,7 @@ namespace ConsoleEngine
 
 		bool IsDestroying(Actor* actor);
 
+		void Clear();
+
 	};
 }

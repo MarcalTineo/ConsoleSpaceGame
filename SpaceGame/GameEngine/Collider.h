@@ -21,6 +21,7 @@ namespace ConsoleEngine
 		std::vector<Vector2> collider;
 		HitInfo lastHit;
 	public:
+		bool enabled;
 		Collider();
 		Collider(int _parentId, std::vector<Vector2> _collider);
 		~Collider();
